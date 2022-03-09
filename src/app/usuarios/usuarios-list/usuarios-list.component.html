@@ -1,0 +1,39 @@
+
+<h2 class="text-center mt-5">USUARIOS</h2>
+<table class="table table-striped" >
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Puesto</th>
+      <th scope="col">Departamento</th>
+      <th scope="col">Fecha de alta</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="usuarios.length > 0; else noData">
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.apellidos }}</td>
+      <td>{{ usuario.puesto }}</td>
+      <td>{{ usuario.departamento }}</td>
+      <td>{{ usuario.created | date:"dd/MM/yyyy" }}</td>
+      <td><img src="{{ usuario.imagen }}" width="100" height="100" /></td>
+      <td>
+        <button type="button" class="btn btn-outline-dark btn-sn" (click)="onEdit(usuario)"><i class="bi bi-pencil-square"></i></button>
+        <button type="button" class="btn btn-outline-dark btn-sn"><i class="bi bi-trash3-fill"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #noData>
+  <tbody>
+    <tr>
+      <td></td>
+      <td colspan="7">No hay usuarios</td>
+    </tr>
+  </tbody>
+</ng-template>
