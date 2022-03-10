@@ -21,9 +21,28 @@ export class UsuariosService {
   constructor(private http: HttpClient) { }
 
   getUsuarios(): Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(`${this.baseUrl}/${this.endpoint}`)
+    return this.http.get<Usuario[]>(`${this.baseUrl}/${this.endpoint}`, this.httpOptions)
         .pipe(catchError(this.handleError));
+  }
 
+  getUsuario(id: any): Observable<Usuario>{
+    return this.http.get<Usuario>(`${this.baseUrl}/${this.endpoint}/${id}`, this.httpOptions)
+        .pipe(catchError(this.handleError));
+  }
+
+  createUsuario(usuario: Usuario): Observable<Usuario>{
+    return this.http.post<Usuario>(`${this.baseUrl}/${this.endpoint}`, usuario, this.httpOptions)
+        .pipe(catchError(this.handleError));
+  }
+
+  updateUsuario(usuario: Usuario): Observable<Usuario>{
+    return this.http.put<Usuario>(`${this.baseUrl}/${this.endpoint}`, usuario, this.httpOptions)
+        .pipe(catchError(this.handleError));
+  }
+
+  deleteUsuario(id: any): Observable<Usuario>{
+    return this.http.delete<Usuario>(`${this.baseUrl}/${this.endpoint}/${id}`, this.httpOptions)
+        .pipe(catchError(this.handleError));
   }
 
   // Manejo de errores
