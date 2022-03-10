@@ -22,7 +22,7 @@ export class UsuariosDetailsComponent implements OnInit {
     this.identificador = this.route.snapshot.params['id'];
 
     // Simulamos la ejecución de un servicio que nos devuelva el usuario con el id que nos llega por la url
-    let usuarioSelected = this.usuarios.find(u => u.id === this.identificador);
+    let usuarioSelected = this.usuarios.find(u => u.id === Number(this.identificador));
 
     console.log(usuarioSelected);
 
