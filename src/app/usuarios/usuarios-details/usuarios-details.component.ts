@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { USUARIOS } from 'src/app/shared/mock-usuarios';
 import { Usuario } from 'src/app/shared/usuario';
+import { UsuariosService } from '../usuarios.service';
 
 @Component({
   selector: 'app-usuarios-details',
@@ -10,21 +11,37 @@ import { Usuario } from 'src/app/shared/usuario';
 })
 export class UsuariosDetailsComponent implements OnInit {
 
-  usuarios: Usuario[] = [];
+  usuario: Usuario = {} as Usuario;
 
-  identificador: number = 0;
+  usuarioForm: FormGroup;
 
-  constructor(private route:ActivatedRoute) {
-  }
+  id: any;
+
+  constructor(private route:ActivatedRoute, private usuariosService: UsuariosService, private fb: FormBuilder) {
+    this.usuarioForm = this.fb.group({
+      nombre: ['', Validators.required],
+      apellidos: ['', Validators.required],
+      puesto: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      departamento: ['', Validators.required],
+    })
+   }
 
   ngOnInit(): void {
-    this.usuarios = USUARIOS;
-    this.identificador = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params['id'];
+    this.obtenerUsuario(this.id);
+  }
 
-    // Simulamos la ejecución de un servicio que nos devuelva el usuario con el id que nos llega por la url
-    let usuarioSelected = this.usuarios.find(u => u.id === Number(this.identificador));
+  obtenerUsuario(id: any): void {
+    this.usuariosService.getUsuario(id).subscribe({
+      next: (data: Usuario) => {
+        this.usuario = data;
+        console.log(this.usuario);
+      },
+      error: err => console.log(err)
+    });
+  }
 
-    console.log(usuarioSelected);
+  onSubmit(){
 
   }
 

@@ -1,1 +1,36 @@
-<h2> DETALLES USUARIO {{identificador}}</h2>
+<div class="mt-5 container">
+  <h2>Detalles del usuario</h2>
+  <div class="card bg-light">
+    <div class="card-body">
+      <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()" class="">
+        <div class="input-group row pt-5">
+          <div class="col">
+            <label for="nombre" class="label">Nombre* </label>
+            <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" required>
+          </div>
+          <div class="col">
+            <label for="apellidos" class="label">Apellidos* </label>
+            <input  class="form-control" type="text" placeholder="Apellidos" formControlName="apellidos" required>
+          </div>
+        </div>
+        <div class="input-group row pt-5">
+          <div class="col">
+            <label for="puesto" class="label">Puesto* </label>
+            <input  class="form-control" type="text" placeholder="Puesto" formControlName="puesto" required>
+          </div>
+          <div class="col">
+            <label for="departamento" class="label">Departamento* </label>
+            <input  class="form-control" type="text" placeholder="Departamento" formControlName="departamento" required>
+          </div>
+        </div>
+        <div class="row pt-5">
+          <div class="col">
+            <button class="btn btn-outline-success" type="submit" [disabled]="!usuarioForm.valid"><i class="bi bi-save"></i> Guardar</button>
+          </div>
+        </div>
+        <p>Form Status: {{ usuarioForm.status }}</p>
+      </form>
+    </div>
+  </div>
+</div>
+

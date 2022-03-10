@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { USUARIOS } from "../../shared/mock-usuarios";
 import { Usuario } from "../../shared/usuario";
 import { UsuariosService } from "../usuarios.service";
 
