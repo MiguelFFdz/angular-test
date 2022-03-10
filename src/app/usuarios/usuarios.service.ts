@@ -36,7 +36,7 @@ export class UsuariosService {
   }
 
   updateUsuario(usuario: Usuario): Observable<Usuario>{
-    return this.http.put<Usuario>(`${this.baseUrl}/${this.endpoint}`, usuario, this.httpOptions)
+    return this.http.put<Usuario>(`${this.baseUrl}/${this.endpoint}/${usuario.id}`, usuario, this.httpOptions)
         .pipe(catchError(this.handleError));
   }
 

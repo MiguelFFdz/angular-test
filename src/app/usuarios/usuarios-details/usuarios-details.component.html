@@ -7,25 +7,52 @@
           <div class="col">
             <label for="nombre" class="label">Nombre* </label>
             <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" required>
+            <!-- Validación -->
+            <div *ngIf="usuarioForm.controls['nombre'].invalid && (usuarioForm.controls['nombre'].dirty || usuarioForm.controls['nombre'].touched)">
+              <div *ngIf="usuarioForm.controls['nombre'].errors">
+                <div class="badge bg-danger mt-0">Nombre es obligatorio {{ usuarioForm.controls['nombre'].errors | json }}</div>
+              </div>
+            </div>
           </div>
           <div class="col">
             <label for="apellidos" class="label">Apellidos* </label>
             <input  class="form-control" type="text" placeholder="Apellidos" formControlName="apellidos" required>
+            <!-- Validación -->
+            <div *ngIf="usuarioForm.controls['apellidos'].invalid && (usuarioForm.controls['apellidos'].dirty || usuarioForm.controls['apellidos'].touched)">
+              <div *ngIf="usuarioForm.controls['apellidos'].errors">
+                <div class="badge bg-danger mt-0">Apellidos es obligatorio {{ usuarioForm.controls['apellidos'].errors | json }}</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="input-group row pt-5">
           <div class="col">
             <label for="puesto" class="label">Puesto* </label>
             <input  class="form-control" type="text" placeholder="Puesto" formControlName="puesto" required>
+            <!-- Validación -->
+            <div *ngIf="usuarioForm.controls['puesto'].invalid && (usuarioForm.controls['puesto'].dirty || usuarioForm.controls['puesto'].touched)">
+              <div *ngIf="usuarioForm.controls['puesto'].errors">
+                <div class="badge bg-danger mt-0">Puesto debe tener 3 caracteres {{ usuarioForm.controls['puesto'].errors | json }}</div>
+              </div>
+            </div>
           </div>
           <div class="col">
             <label for="departamento" class="label">Departamento* </label>
             <input  class="form-control" type="text" placeholder="Departamento" formControlName="departamento" required>
+            <!-- Validación -->
+            <div *ngIf="usuarioForm.controls['departamento'].invalid && (usuarioForm.controls['departamento'].dirty || usuarioForm.controls['departamento'].touched)">
+              <div *ngIf="usuarioForm.controls['departamento'].errors">
+                <div class="badge bg-danger mt-0">Departamento es obligatorio {{ usuarioForm.controls['departamento'].errors | json }}</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row pt-5">
           <div class="col">
-            <button class="btn btn-outline-success" type="submit" [disabled]="!usuarioForm.valid"><i class="bi bi-save"></i> Guardar</button>
+            <button class="btn btn-outline-success" type="submit" [disabled]="!usuarioForm.valid"><i class="bi bi-save"></i> Guardar
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="guardando"></span>
+            </button>
+            <button class="btn btn-outline-danger float-end" backButton><i class="bi bi-chevron-double-left"></i>Volver</button>
           </div>
         </div>
         <p>Form Status: {{ usuarioForm.status }}</p>
