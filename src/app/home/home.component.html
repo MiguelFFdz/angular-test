@@ -11,20 +11,39 @@
 <section class="py-5">
   <div class="container px-4 px-lg-5 mt-5">
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-          <div class="col mb-5" *ngFor="let number of [0,1,2]; let i=index">
-              <div class="card h-100">
+        <mat-card class="example-card" *ngFor="let number of [0,1,2]; let i=index">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+          <!-- <div class="col mb-5" *ngFor="let number of [0,1,2]; let i=index">
+              <div class="card h-100"> -->
                   <!--  image-->
-                  <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" [alt]="'Imagen de portada' + i" />
+                  <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" [alt]="'Imagen de portada' + i" /> -->
                   <!--  details-->
-                  <div class="card-body p-4">
-                      <div class="text-center">
+                  <!-- <div class="card-body p-4"> -->
+                      <!-- <div class="text-center"> -->
                           <!--  name-->
-                          <h5 class="fw-bolder">Titulo</h5>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      </div>
+                          <!-- <h5 class="fw-bolder">Titulo</h5> -->
+                          <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. -->
+                      <!-- </div>
                   </div>
               </div>
-          </div>
+          </div> -->
       </div>
   </div>
 </section>
