@@ -12,12 +12,6 @@ export class UsuariosListComponent implements OnInit, OnDestroy {
 
   usuarios?: Usuario[];
 
-  nombre: string = "";
-  apellidos: string = "";
-  puesto: string = "";
-  departamento: string = "";
-  imagen: string = "";
-
   constructor(private router: Router, private usuariosService: UsuariosService){
     console.log('Constructor UsuariosList:');
   }
@@ -41,25 +35,16 @@ export class UsuariosListComponent implements OnInit, OnDestroy {
     });
   }
 
-  // onEdit(usuario: Usuario) {
-  //   console.log(usuario);
-  //   this.router.navigate(['usuarios', usuario.id]);
+  onDelete(id: number): void {
+    if(window.confirm("¿Seguro?")) {
+      this.usuariosService.deleteUsuario(id).subscribe(
+        data => {
+          console.log('Eliminado usuario: ' + JSON.stringify(data));
+          this.loadUsuarios();
+        }
+      );
+    }
 
-  // }
-
-  // addUsuario() {
-  //   this.usuarios.push(
-  //     {
-  //     created: new Date(),
-  //     nombre: this.nombre,
-  //     apellidos: this.apellidos,
-  //     puesto: this.puesto,
-  //     departamento: this.departamento,
-  //     imagen: this.imagen,
-  //     id: this.usuarios.length + 1
-  //   }
-  //   );
-  // }
-
+  }
 
 }

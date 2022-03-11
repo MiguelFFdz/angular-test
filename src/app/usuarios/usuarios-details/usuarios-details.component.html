@@ -46,6 +46,16 @@
               </div>
             </div>
           </div>
+          <div class="col">
+            <label for="imagen" class="label">Imagen* </label>
+            <input  class="form-control" type="text" placeholder="Url de la imagen" formControlName="imagen" required>
+            <!-- Validación -->
+            <div *ngIf="usuarioForm.controls['imagen'].invalid && (usuarioForm.controls['imagen'].dirty || usuarioForm.controls['imagen'].touched)">
+              <div *ngIf="usuarioForm.controls['imagen'].errors">
+                <div class="badge bg-danger mt-0">la url no tiene el formato correcto {{ usuarioForm.controls['imagen'].errors | json }}</div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="row pt-5">
           <div class="col">
