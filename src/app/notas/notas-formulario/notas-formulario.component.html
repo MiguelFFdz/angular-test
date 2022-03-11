@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="notasForm">
+  <div class="col-3 mt-5">
+    <div class="form-group">
+      <label for="titulo">Titulo</label>
+      <input type="text" class="form-control" formControlName="titulo" placeholder="Titulo">
+    </div>
+    <div class="form-group mt-2">
+      <label for="descripcion">Descripción</label>
+      <textarea class="form-control" formControlName="descripcion" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-dark mt-4">Añadir Nota</button>
+    <button type="button" class="btn btn-dark mt-4" (click) = "random()">Randomize</button>
+    <button type="button" class="btn btn-danger mt-4" (click) = "reset()">Reset</button>
+  </div>
+</form>

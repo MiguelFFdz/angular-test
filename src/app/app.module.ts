@@ -17,7 +17,7 @@ import { BackButtonDirective } from './directives/back-button.directive';
     NavbarComponent,
     HomeComponent,
     NotfoundComponent,
-    BackButtonDirective
+    BackButtonDirective,
   ],
   imports: [
     BrowserModule,

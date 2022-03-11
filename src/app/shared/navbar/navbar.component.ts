@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotasService } from '../services/notas.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  numNotas: number;
+
+  constructor(private notasService: NotasService) {
+
+    this.numNotas = 0;
+    this.notasService.getNotas$().subscribe(notas => {
+      this.numNotas = notas.length;
+    });
+
+  }
 
   ngOnInit(): void {
   }

@@ -10,6 +10,7 @@ const routes: Routes = [
   // { path: 'usuarios', component: UsuariosListComponent},
   { path: '404', component: NotfoundComponent },
   { path: 'usuarios', loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule) },
+  { path: 'notas', loadChildren: () => import('./notas/notas.module').then(m => m.NotasModule) },
   { path: '**', redirectTo: '404', pathMatch: 'full' }
 
 ];

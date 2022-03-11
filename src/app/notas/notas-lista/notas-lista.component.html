@@ -1,0 +1,5 @@
+<ul *ngFor="let nota of arrNotas; let i=index">
+  <li>
+    {{ nota.descripcion}} - {{nota.titulo}} <span class="badge rounded-pill bg-danger" (click)="borrarNota(i)">X</span>
+  </li>
+</ul>
