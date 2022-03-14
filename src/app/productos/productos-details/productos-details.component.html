@@ -1,0 +1,61 @@
+<div class="mt-5 container">
+  <h2>Detalles del producto</h2>
+  <div class="card bg-light">
+    <div class="card-body">
+      <form [formGroup]="productoForm" class="">
+        <div class="input-group row pt-5">
+          <div class="col">
+            <label for="nombre" class="label">Nombre* </label>
+            <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" required>
+            <!-- Validación -->
+            <div *ngIf="productoForm.controls['nombre'].invalid && (productoForm.controls['nombre'].dirty || productoForm.controls['nombre'].touched)">
+              <div *ngIf="productoForm.controls['nombre'].errors">
+                <div class="badge bg-danger mt-0">Nombre es obligatorio {{ productoForm.controls['nombre'].errors | json }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="descripcion" class="label">Descripcion* </label>
+            <input  class="form-control" type="text" placeholder="Descripcion" formControlName="descripcion" required>
+            <!-- Validación -->
+            <div *ngIf="productoForm.controls['descripcion'].invalid && (productoForm.controls['descripcion'].dirty || productoForm.controls['descripcion'].touched)">
+              <div *ngIf="productoForm.controls['descripcion'].errors">
+                <div class="badge bg-danger mt-0">Descripcion es obligatorio {{ productoForm.controls['descripcion'].errors | json }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-group row pt-5">
+          <div class="col">
+            <label for="precio" class="label">Precio* </label>
+            <input  class="form-control" type="text" placeholder="precio" formControlName="precio" required>
+            <!-- Validación -->
+            <div *ngIf="productoForm.controls['precio'].invalid && (productoForm.controls['precio'].dirty || productoForm.controls['precio'].touched)">
+              <div *ngIf="productoForm.controls['precio'].errors">
+                <div class="badge bg-danger mt-0">Precio debe tener 3 caracteres {{ productoForm.controls['precio'].errors | json }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="imagen" class="label">Imagen* </label>
+            <input  class="form-control" type="text" placeholder="Url de la imagen" formControlName="imagen" required>
+            <!-- Validación -->
+            <div *ngIf="productoForm.controls['imagen'].invalid && (productoForm.controls['imagen'].dirty || productoForm.controls['imagen'].touched)">
+              <div *ngIf="productoForm.controls['imagen'].errors">
+                <div class="badge bg-danger mt-0">la url no tiene el formato correcto {{ productoForm.controls['imagen'].errors | json }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5">
+          <div class="col">
+            <button class="btn btn-outline-success" type="button"  (click)="onSubmit()"><i class="bi bi-save"></i> Guardar</button>
+            <button class="btn btn-outline-danger float-end" type="button" (click)="onReset()"><i class="bi bi-chevron-double-left"></i>Reset</button>
+          </div>
+        </div>
+        <p>Form Status: {{ productoForm.status }}</p>
+      </form>
+    </div>
+  </div>
+</div>
+

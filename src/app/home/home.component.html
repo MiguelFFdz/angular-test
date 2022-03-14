@@ -7,8 +7,46 @@
       </div>
   </div>
 </header>
+<!-- Login-->
+<!-- <div class="row mt-2 justify-content-center" *ngIf="!isLoggedIn; else logueado"> -->
+<div class="row mt-2 justify-content-center">
+
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <form class="justify-content-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group justify-content-center">
+            <label for="email">Email</label>
+            <input type="email" class="form-control mt-2 mb-2" placeholder="Email del usuario" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control mt-2 mb-2" placeholder="Password"  formControlName="password">
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- LoggendIn -->
+<ng-template #logueado>
+  <div class="row mt-2 justify-content-center">
+    <div class="col-md-3">
+      <div class="card">
+        <!-- <div class="card-header">
+          <h3 class="card-title">Hola {{currentUser?.email}}</h3>
+        </div>
+        <div class="card-body">
+          <p>Tu última visita fue el {{currentUser?.lastLogin | date:"dd/MM/yyyy hh:mm"}}</p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+</ng-template>
 <!-- Section-->
-<section class="py-5">
+<!-- <section class="py-5">
   <div class="container px-4 px-lg-5 mt-5">
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <mat-card class="example-card" *ngFor="let number of [0,1,2]; let i=index">
@@ -29,7 +67,7 @@
             <button mat-button>LIKE</button>
             <button mat-button>SHARE</button>
           </mat-card-actions>
-        </mat-card>
+        </mat-card> -->
           <!-- <div class="col mb-5" *ngFor="let number of [0,1,2]; let i=index">
               <div class="card h-100"> -->
                   <!--  image-->
@@ -44,6 +82,6 @@
                   </div>
               </div>
           </div> -->
-      </div>
+      <!-- </div>
   </div>
-</section>
+</section> -->
