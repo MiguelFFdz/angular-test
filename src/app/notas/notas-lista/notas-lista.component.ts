@@ -13,7 +13,7 @@ export class NotasListaComponent implements OnInit {
   arrNotas: Nota[]
 
   constructor(private notasService: NotasService) {
-    this.arrNotas = [];
+    this.arrNotas = notasService.notas;
    }
 
   ngOnInit(): void {
