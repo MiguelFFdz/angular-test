@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/shared/services/auth.service";
 import { Usuario } from "../../shared/usuario";
 import { UsuariosService } from "../usuarios.service";
 
@@ -12,7 +13,8 @@ export class UsuariosListComponent implements OnInit, OnDestroy {
 
   usuarios?: Usuario[];
 
-  constructor(private router: Router, private usuariosService: UsuariosService){
+  isAdmin?: boolean;
+  constructor(private router: Router, private usuariosService: UsuariosService, private authService: AuthService){
     console.log('Constructor UsuariosList:');
   }
 
@@ -32,6 +34,16 @@ export class UsuariosListComponent implements OnInit, OnDestroy {
         console.log('Usuarios: ', this.usuarios);
       },
       error: err => console.log(err)
+    });
+  }
+
+  compruebaPrivilegios(){
+    this.authService.getCurrentUser$().subscribe(user=> {
+      if(user && Object.keys(user).length > 0 ){
+        this.isAdmin = user.admin;
+      } else {
+        this.isAdmin = false;
+      }
     });
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { NotasService } from '../services/notas.service';
 
 @Component({
@@ -9,8 +10,10 @@ import { NotasService } from '../services/notas.service';
 export class NavbarComponent implements OnInit {
 
   numNotas: number;
+  isLoggedIn?: boolean;
+  isAdmin?: boolean;
 
-  constructor(private notasService: NotasService) {
+  constructor(private notasService: NotasService, private authService: AuthService) {
 
     this.numNotas = 0;
     this.notasService.getNotas$().subscribe(notas => {
@@ -20,6 +23,19 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.getCurrentUser$().subscribe(user => {
+      if(user && Object.keys(user).length > 0) {
+        this.isLoggedIn = true;
+        this.isAdmin = user.admin;
+      } else {
+        this.isLoggedIn = false;
+        this.isAdmin = false;
+      }
+    });
+  }
+
+  logOut() {
+    this.authService.logOut();
   }
 
 }

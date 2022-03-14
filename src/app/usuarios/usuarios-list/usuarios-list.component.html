@@ -1,6 +1,6 @@
 
 <h2 class="text-center mt-5">USUARIOS</h2>
-<button class="btn btn-primary float-end" type="button" [routerLink]="['/usuarios/nuevo']"><i class="bi bi-plus"></i> Nuevo usuario</button>
+<button class="btn btn-primary float-end" type="button" [routerLink]="['/usuarios/nuevo']" *ngIf="isAdmin"><i class="bi bi-plus"></i> Nuevo usuario</button>
 <table class="table table-striped" >
   <thead>
     <tr>
@@ -11,7 +11,7 @@
       <th scope="col">Departamento</th>
       <th scope="col">Fecha de alta</th>
       <th scope="col">Imagen</th>
-      <th scope="col">Acciones</th>
+      <th scope="col" *ngIf="isAdmin">Acciones</th>
     </tr>
   </thead>
   <tbody *ngIf="usuarios; else noData">
@@ -23,10 +23,10 @@
       <td>{{ usuario.departamento | company: "Google"}}</td>
       <td>{{ usuario.created | date:"dd/MM/yyyy" | pastDays }}</td>
       <td><img src="{{ usuario.imagen }}" width="100" height="100" /></td>
-      <td>
+      <td *ngIf="isAdmin">
         <!-- <button type="button" class="btn btn-outline-dark btn-sn" (click)="onEdit(usuario)"><i class="bi bi-pencil-square"></i></button> -->
-        <button type="button" class="btn btn-outline-dark btn-sn" [routerLink]="['/usuarios', usuario.id]" [state]="{usuario: usuario}"><i class="bi bi-pencil-square"></i></button>
-        <button type="button" class="btn btn-outline-dark btn-sn" (click)="onDelete(usuario.id)"><i class="bi bi-trash3-fill"></i></button>
+        <button type="button" class="btn btn-outline-dark btn-sn" [routerLink]="['/usuarios', usuario.id]" [state]="{usuario: usuario}" *ngIf="isAdmin"><i class="bi bi-pencil-square"></i></button>
+        <button type="button" class="btn btn-outline-dark btn-sn" (click)="onDelete(usuario.id)" *ngIf="isAdmin"><i class="bi bi-trash3-fill"></i></button>
       </td>
     </tr>
   </tbody>

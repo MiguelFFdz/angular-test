@@ -6,7 +6,6 @@ import { NotfoundComponent } from './notfound/notfound.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  // { path: 'usuarios', component: UsuariosListComponent},
   { path: '404', component: NotfoundComponent },
   { path: 'usuarios', loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule) },
   { path: 'productos', loadChildren: () => import('./productos/productos.module').then(m => m.ProductosModule) },
